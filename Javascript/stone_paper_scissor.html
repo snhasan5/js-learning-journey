@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stone</title>
+  </head>
+  <body>
+    <h1>Welcome to Rock Paper Scissor</h1>
+    <button onclick="check(2)">Rock</button>
+    <button onclick="check(1)">Paper</button>
+    <button onclick="check(0)">Scissor</button>
+    <button onclick="reset()">Reset</button>
+    <p class="Score"></p>
+    <script>
+      const Score = {
+        HumanWins: 0,
+        RobotWins: 0,
+        Ties: 0,
+        Turn:0
+      };
+      //rock - 2, paper-1, scissor-0
+      function check(userInput) {
+        let robotInput = Math.floor(Math.random() * 3);
+
+        console.log("user : " + userInput + " robot : " + robotInput);
+        if (
+          (userInput == 2 && robotInput == 1) ||
+          (userInput == 1 && robotInput == 0) ||
+          (userInput == 0 && robotInput == 2)
+        ) {
+          Score.RobotWins++;
+          Score.Turn++;
+          alert(`Score:
+            Human Wins: ${Score.HumanWins}
+            Robot Wins: ${Score.RobotWins}
+            Ties: ${Score.Ties}`);
+        } else if (userInput == robotInput) {
+          Score.Ties++;
+                    Score.Turn++;
+
+          alert(`Score:
+                Human Wins: ${Score.HumanWins}
+                Robot Wins: ${Score.RobotWins}
+                Ties: ${Score.Ties}`);
+        } else {
+          Score.HumanWins++;
+                    Score.Turn++;
+
+          alert(`Score:
+                Human Wins: ${Score.HumanWins}
+                Robot Wins: ${Score.RobotWins}
+                Ties: ${Score.Ties}`);
+        }
+        if(Score.Turn==3){
+            if(Score.HumanWins > Score.RobotWins) {
+                alert("Human Wins");
+                reset();
+            }
+            else {
+                alert("Robot Wins")
+                reset();
+            }
+        }
+      }
+      function reset(){
+        Score.HumanWins = 0;
+        Score.RobotWins = 0;
+        Score.Ties = 0;
+        Score.Turn = 0;          alert(`Score:
+            Human Wins: ${Score.HumanWins}
+            Robot Wins: ${Score.RobotWins}
+            Ties: ${Score.Ties}`);
+      }
+    </script>
+  </body>
+</html>

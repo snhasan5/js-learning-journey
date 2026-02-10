@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <p>8</p>
+    <script >
+        const product = {
+            //property-value pair
+            name : "Sayyed",
+            height : 6
+        }
+        console.log(product.name+" height is : "+product.height);
+        //i can change the value of the object
+        product.name = "Mansoor";
+        console.log(product.name+" height is : "+product.height);
+        
+        //you can add newer properties by 
+        product.handsome =  false;
+        console.log(`is ${product.name} handsome ? -> ${product.handsome}`);
+
+        delete product.handsome;
+        console.log(product); //You will get undifined
+
+
+    </script>
+</body>
+</html>
