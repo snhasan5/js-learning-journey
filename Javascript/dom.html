@@ -6,6 +6,23 @@
     <title>DomPractise</title>
 </head>
 <body>
-    
+    <!-- <button id="btn1" onclick="clicked('1')">9a</button>
+    <button id="btn2" onclick="clicked('2')">9b</button> -->
+    <label for="fname">Name: </label>
+    <input type="text" name="name" id="fname" placeholder="First name">
+    <button type="submit" onclick="clicked()">Submit</button>
+    <p></p>
+
+    <script>
+        // function clicked(userInput){
+        //     var value = document.querySelector("#btn" + userInput).textContent;  
+        //     document.body.querySelector("p").innerHTML = `You have selected ${value}`;
+        // }
+        function clicked(){
+            var value = document.querySelector("#fname").value;
+            document.querySelector("p").innerHTML = `You have selected ${value}`;
+        }
+    </script>
 </body>
+
 </html>

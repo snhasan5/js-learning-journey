@@ -1,0 +1,93 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Form-Validation</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+        href="https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet"
+        />
+        <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html,
+        body {
+            background-image: linear-gradient(to bottom, #0565c6, #85a1bc);
+            height: 100%;
+            width: 100%;
+            display: flex;
+            font-family: "SN Pro";
+            color: white;
+            flex-direction: column;
+            justify-content: center; /* Centers content horizontally along the main axis */
+            align-items: center;
+        }
+        .container {
+            background-color: #fffffffc;
+            height: 80%;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centers content horizontally along the main axis */
+            align-items: center;
+            border: thick solid #0e5aa5;
+        }
+        .form {
+            height: auto;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            color: black;
+        }
+        input {
+            margin-bottom: 0.8rem;
+        }
+        button {
+            width: 100px;
+            height: 30px;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Enter Your Details</h1>
+        <div class="container">
+        <div class="form">
+            <label for="fname"> Name:</label>
+            <input
+            type="text"
+            name="name"
+            id="fname"
+            placeholder="Enter Your Name "
+            />
+            <label for="fname"> Email:</label>
+            <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Enter Your Email "
+            />
+            <label for="fname"> Password:</label>
+            <input
+            type="text"
+            name="password"
+            id="pass"
+            placeholder="Enter Your Password"
+            />
+            <label for="fname">Confirm Password:</label>
+            <input
+            type="text"
+            name="password"
+            id="c-pass"
+            placeholder="Confirm Password "
+            />
+        </div>
+        <button type="submit">Submit</button>
+        </div>
+    </body>
+    </html>
