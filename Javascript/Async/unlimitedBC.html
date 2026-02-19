@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The Love to Code</h1>
+    <button id ="start">START</button>
+    <button id ="end">END</button>
+<script>
+    let intervalID;
+    const colors = ['violet','indigo','blue','red','green'];
+    const startBtn = document.querySelector('#start');
+    const endBtn = document.querySelector('#end');
+
+    function randomColorBC(){
+        let index = Math.floor(Math.random()*colors.length);
+        document.querySelector('body').style.backgroundColor = colors[index];
+    }
+
+    startBtn.addEventListener('click',function(){
+            if(intervalID != null) return;
+            intervalID =  setInterval(randomColorBC,1000);
+    })
+    endBtn.addEventListener('click',function(){
+       clearInterval(intervalID);
+       intervalID = null;
+       console.log('end');
+    })
+</script>
+</body>
+
+</html>
