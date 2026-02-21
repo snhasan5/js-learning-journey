@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      html,
+      body {
+        width: 100%; /* 100% of the viewport width */
+        height: 100%; /* At least 100% of the viewport height */
+        margin: 0; /* Remove default browser margins */
+        padding: 0; /* Remove default browser padding */
+        display: flex;
+        justify-content: center; /* Centers content horizontally along the main axis */
+        align-items: center;
+        font-family: "Courier New", Courier, monospace;
+      }
+      .container {
+        height: 70%;
+        width: 30%;
+        background-image: linear-gradient(to bottom, #0565c6, #0e171f);
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        gap: 10px;
+      }
+      img {
+        height: 100px;
+        width: 100px;
+      }
+    </style>
+    <title>GIT</title>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        id="profile"
+        src="https://avatars.githubusercontent.com/u/163376721?v=4"
+        alt=""
+      />
+      <p id="uname">Name: Hasan</p>
+      <p id="followers">Followers : 1000</p>
+      <p id="logs">Createed on</p>
+      <p id="sid">Social ID: 2562346</p>
+      <p></p>
+    </div>
+    <script>
+      const username = document.getElementById("uname");
+      const follows = document.getElementById("followers");
+      const img = document.getElementById("profile");
+      const user_id = document.getElementById("sid");
+      const login = document.getElementById("logs");
+
+      const xhr = new XMLHttpRequest();
+      const url = "";
+      const token = '';
+      xhr.open("GET", url);
+      xhr.setRequestHeader("Authorization", token);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 )
+        if(xhr.status === 200) {
+          console.log(xhr.readyState);
+          //  const data = this.responseText; //usually string
+          const data = JSON.parse(this.responseText);
+          username.textContent = data.login;
+          img.src = data.avatar_url;
+          user_id.textContent = data.id;
+          follows.textContent = data.followers;
+          login.textContent = `Created on ${data.created_at} and last updated on ${data.updated_at}`;
+        }
+        else{
+                  console.error("Request failed:", xhr.status);
+
+        }
+      };
+      xhr.send();
+    </script>
+  </body>
+</html>

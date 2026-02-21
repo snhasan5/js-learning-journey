@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> bla balvataw wrf </h1>
+</body>
+<script>
+    const url = 'https://jsonplaceholder.typicode.cm/users';
+const xhr = new XMLHttpRequest();
+xhr.open('GET', url);
+xhr.onreadystatechange = function(){ //what to do if state change
+        console.log(xhr.readyState); // gives the state of the request
+        if(xhr.readyState === 4){
+            const data = this.responseText; //usually string
+            const j_data = JSON.parse(data);
+            console.log(typeof j_data);
+            
+        }
+
+}
+xhr.send();
+</script>
+</html>

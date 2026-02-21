@@ -24,8 +24,8 @@ JsUser.email = 'nazeer@vitapsnt.ac.in'; // updates the value
 
 //functions inside objects
 JsUser.greeting('hasan');
-JsUser.cuss = function(){
-    console.log("FuckOff");
+JsUser.cutting = function(){
+    console.log("Splice");
 }
 console.log(JsUser);
 
