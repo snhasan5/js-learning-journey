@@ -14,7 +14,7 @@ const JsUser = {
         }
 }
 //accessing objects
-console.log(JsUser.name);
+console.log(typeof JsUser.lastLoginUser);
 console.log(JsUser['age']);
 console.log(typeof JsUser[mySym]);
 
