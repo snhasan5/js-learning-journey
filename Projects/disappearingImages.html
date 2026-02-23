@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disappearing images</title>
+</head>
+<body>
+    <div>
+ <img src="https://fastly.picsum.photos/id/630/200/300.jpg?hmac=Qat1qmS4S2t4rLYqAEW2wwkzkXdCnsYltDyo8kbmjfw" id="first" alt="">  
+ <img src="https://fastly.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8" id="second" alt=""> 
+ <img src="https://fastly.picsum.photos/id/563/200/300.jpg?hmac=SZO4DbUo3eM7wbKdFWm2jUkpnLD7OkJda_aTTd8FP9k" id="third" alt="">
+ </div>
+<script>
+    const main = document.querySelector('div');
+    main.addEventListener('click',function(e){
+        let id = document.getElementById(e.target.id);
+        console.log(id);
+        id.remove();
+    }) 
+</script>
+</body>
+</html>

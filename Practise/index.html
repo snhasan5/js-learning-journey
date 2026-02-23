@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            background-color: rgb(188, 178, 107);
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <label for="uName">Username: </label>
+    <input type="text" name="username" placeholder="Enter a unique username" id="uName">
+    <button id="submitBtn">SUBMIT</button>
+    <p></p>
+    <script>
+       // Cache DOM elements (good practice: avoid repeated DOM queries)
+const submitBtn = document.getElementById('submitBtn');
+const userInput = document.getElementById('uName');
+const message = document.querySelector('p');
+
+let usersData = null; // will store fetched users
+
+// Load users once when page loads (performance optimization)
+async function loadUsers() {
+    try {
+        submitBtn.disabled = true;
+        message.textContent = "Loading users...";
+
+        const response = await fetch("./users.json");
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch users.json");
+        }
+
+        usersData = await response.json();
+
+        message.textContent = ""; // clear loading message
+    } catch (error) {
+        console.error("Error loading users:", error);
+        message.textContent = "Error loading users.";
+    } finally {
+        submitBtn.disabled = false;
+    }
+}
+
+// Validate username
+function validate() {
+    const userName = userInput.value.trim();
+
+    // 1️⃣ Empty input validation
+    if (!userName) {
+        showMessage("Please enter a username.", "error");
+        return;
+    }
+
+    // 2️⃣ Safety check if users not loaded
+    if (!usersData) {
+        showMessage("Users not loaded yet. Try again.", "error");
+        return;
+    }
+
+    // 3️⃣ Case-insensitive comparison
+    const exists = usersData.usernames
+        .map(name => name.toLowerCase())
+        .includes(userName.toLowerCase());
+
+    if (exists) {
+        showMessage("Username already taken ❌", "error");
+    } else {
+        showMessage("Username available ✅", "success");
+    }
+}
+
+// Helper function (clean code practice)
+function showMessage(text, type) {
+    message.textContent = text;
+    message.className = type; // allows styling via CSS
+}
+
+// Event Listener
+submitBtn.addEventListener('click', validate);
+
+// Load users when page loads
+loadUsers();
+    </script>
+</body>
+</html>
