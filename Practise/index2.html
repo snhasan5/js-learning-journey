@@ -1,49 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background-color: rgb(27, 27, 27);
+      color: aliceblue;
+      font-family: sans-serif;
+      padding: 100px;
+    }
+
+    #div1 {
+      margin-top: 3px;
+      width: 28.59%;
+      display: flex;
+      flex-direction: column;
+      border: white solid;
+    }
+
+    .suggestion {
+      background-color: rgb(49, 47, 47);
+      padding-bottom: 1rem;
+      transition: background-color 1s ;
+    }
+    .suggestion:hover{
+      background-color:rgb(60, 59, 59); ;
+    }
+  </style>
 </head>
+
 <body>
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  </head>
-  <body>
-    <search>
+  <search>
+    <div>
       <label for="pname"> Product : </label>
       <input type="text" name="name" id="pname">
       <button id="sBtn">SEARCH</button>
-    </search>
-    <script>
-          let productNames = null;
-          async function database(){
-            try{
-                const response = await fetch("./products.json");
-                const data = await response.json();
-                productNames = data.productnames
-                console.log(productNames);
-            }
-            catch(e){
-              console.log(e);
-            }
-          }
-          database();
-          const enterBtn = document.getElementById('sBtn');
-          const product = document.getElementById('pname');
-          product.addEventListener('input',(e)=>{
-            let enteredVal = product.value;
-            const filtered = productNames.filter((products)=> products.includes(enteredVal));
-            //all thats left is adding the filtered suggestions via dom
-            console.log(filtered);
-          })
+    </div>
+    <div id="div1"></div>
+  </search>
+  <script>
+    let productNames = null;
+    async function database() {
+      try {
+        const response = await fetch("./products.json");
+        const data = await response.json();
+        productNames = data;
+        console.log(productNames);
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    database(); //fetches the data from the database (here just a json file )
 
-    </script>
-  </body>
-  </html>
+    const product = document.getElementById('pname');
+    const parentDiv = document.getElementById("div1");
+    let timeId; //stores the timeout data
+
+    product.addEventListener('input', (e) => {
+        clearTimeout(timeId)
+        timeId = setTimeout(debounceSearch, 1000);
+
+    })
+    function debounceSearch(){
+            if (!productNames) return;
+      parentDiv.innerHTML = "";
+      //search text processing 
+      let enteredVal = product.value;
+      enteredVal = enteredVal.trim().toLowerCase();
+      //search suggestiom
+      let filtered = [];
+      if (enteredVal != "") {
+        console.log(productNames[0].name.includes(enteredVal));
+        filtered = productNames.filter((products) => products.name.toLowerCase().includes(enteredVal));
+      }
+      console.log(filtered);
+
+      //all thats left is adding the filtered suggestions via dom
+      if (filtered.length === 0) {
+        parentDiv.innerHTML = "<p>No products found</p>";
+      }
+      else {
+        for (let i = 0; i < 5; i++) {
+          let newDiv = document.createElement("div");
+          // let newContent = document.createTextNode(`${filtered[i]}`);
+          newDiv.innerHTML = `<h3>
+                                  Name : ${filtered[i].name}
+                              </h3>
+                              <p>
+                                  Price : ${filtered[i].price}
+                              </p>
+                               <p>
+                                  Category : ${filtered[i].category}
+                              </p>`
+
+          // newDiv.appendChild(newContent);
+          newDiv.className = ('suggestion');
+          parentDiv.appendChild(newDiv);
+        }
+      }
+
+      console.log(filtered);
+    }
+  </script>
 </body>
+
+</html>
+</body>
+
 </html>

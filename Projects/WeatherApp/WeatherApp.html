@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      div {
+        border: 2px solid black;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      .container {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+      }
+      .container1{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+      }
+      .box1{
+        flex:1;
+      }
+      .container2{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+
+      }
+      #title{
+        flex:1;
+      }
+      #cityName{
+        flex:1;
+      }
+      #temp{
+        flex : 2;
+      }
+      #description{
+        flex:1
+      }
+    </style>
+    <script src="./index.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Enter The City Name</h1>
+    <input type="text" name="city" id="city" />
+    <div class="container">
+      <div class="container1">
+        <div id="time" class="box1"></div>
+        <div id="locaton"  class="box1">
+          <div id="lat"></div>
+          <div id="long"></div>
+        </div>
+        <div id="quote"  class="box1"></div>
+      </div>
+      <div class="container2">
+        <div id="title">Weather Report</div>
+        <div id="cityName"></div>
+        <div id="temp"></div>
+        <div id="description"></div>
+        <div></div>
+      </div>
+    </div>
+  </body>
+</html>

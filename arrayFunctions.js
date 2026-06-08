@@ -15,7 +15,7 @@ const myn2 = myArr.splice(1,3);
 console.log("C",myn2);
 console.log("D",myArr);
 
-myArr = myArr.concat(myn2);
+myArr.concat(myn2);
 console.log(myArr);
 
 // .flat -> flatlines the array

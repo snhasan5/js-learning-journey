@@ -5,7 +5,7 @@
 //   }, 2000);
 //   // resolve();
 // });
-// //consumption of the promise
+//consumption of the promise
 // promiseOne.then(function () {
 //   console.log("Async task consumed");
 // });

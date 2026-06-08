@@ -9,8 +9,9 @@ const JsUser = {
     location : "AP",
     isLoggedIn : false,
     lastLoginUser: ["Monday","Saturday"],
-    greeting: function greeting(args){
+    greeting: function (args){
         console.log(`hello ${this.name}`);
+        return 1;
         }
 }
 //accessing objects
@@ -23,10 +24,9 @@ JsUser.email = 'nazeer@vitapstudent.ac.in'; //new property added
 JsUser.email = 'nazeer@vitapsnt.ac.in'; // updates the value
 
 //functions inside objects
-JsUser.greeting('hasan');
 JsUser.cutting = function(){
     console.log("Splice");
 }
-console.log(JsUser);
+console.log(JsUser.greeting('hasan'));
 
 
