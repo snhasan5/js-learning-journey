@@ -5,7 +5,7 @@ myArr.unshift(9); // adds elements in the first index
 myArr.shift(); // removes the first index
 console.log(myArr.includes(9)); //boolean
 console.log(myArr.indexOf(2)); //return the index
-
+``
 console.log("A", myArr);
 
 const myn1 = myArr.slice(1,3);
